@@ -1,0 +1,144 @@
+import groovyx.gpars.GParsPool
+import net.masterthought.cucumber.Configuration
+import net.masterthought.cucumber.ReportBuilder
+import net.masterthought.cucumber.Reportable
+
+group 'nova'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'idea'
+
+buildscript {
+    repositories {
+        maven {
+            url "http://repo.bodar.com"
+        }
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.codehaus.gpars:gpars:1.2.1",
+                "net.masterthought:cucumber-reporting:4.9.0"
+    }
+}
+ext.cukesVersion = '1.2.5'
+dependencies {
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+    compile group: 'net.masterthought', name: 'cucumber-reporting', version: "4.9.0"
+    compile group: 'com.googlecode.totallylazy', name: 'totallylazy', version: '1193'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: "3.141.59"
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: "3.141.59"
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.12.1'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.9'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.1'
+
+    compile group: 'info.cukes', name: 'cucumber-junit', version: "$cukesVersion"
+    compile group: 'info.cukes', name: 'cucumber-core', version: "$cukesVersion"
+    compile group: 'info.cukes', name: 'cucumber-java8', version: "$cukesVersion"
+    compile group: 'ru.yandex.qatools.ashot', name: 'ashot', version: '1.5.4'
+
+
+    compile(
+            "org.codehaus.groovy:groovy-all:2.5.6"
+    )
+
+    compile files("$buildDir/classes/main")
+}
+
+repositories {
+    maven {
+        url "http://repo.bodar.com"
+    }
+    mavenCentral()
+
+}
+
+sourceCompatibility = 1.8
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task runInParallel() {
+    doLast {
+        def tag = System.getProperty("tag")
+        def market = System.getProperty("market")
+        if (tag == null) {
+            tag = "~@wip"
+        }
+        runCucumberTests(market, tag)
+    }
+}
+
+task generateCucumberReport(dependsOn: ["npmInstall"], type: Exec) {
+    def market = System.getProperty("market")
+    try {
+        def jsonFile = file('./build_info')
+        def parsedJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
+
+        def buildNumber = parsedJson.buildNumber
+        def hpNumber = parsedJson.hpNumber
+        def srpPdpNumber = parsedJson.srpPdpNumber
+        def region = parsedJson.region
+        def mockerServer = parsedJson.mockerServer
+
+        commandLine './run-node-compile-report.sh'
+        args "${market}", "${buildNumber}", "${hpNumber}", "${srpPdpNumber}", "${region}", "${mockerServer}"
+    } finally {
+
+    }
+}
+
+def runCucumberTests(market, tag) {
+    def features = fileTree(dir: "${project.projectDir}/build/resources/test/features/${market}").include '**/*.feature'
+    delete("${project.projectDir}/screenshot")
+    GParsPool.withPool(5) {
+        try {
+            features.eachParallel { File file ->
+                exec {
+                    executable "sh"
+                    args "-c", "mkdir -p ${reporting.baseDir}/cucumber " +
+                            "&& java -Dmarket=${market} " +
+                            "-cp \"${sourceSets.test.runtimeClasspath.asPath}\" " +
+                            "cucumber.api.cli.Main " +
+                            "--glue classpath:web.auto " +
+//                            "${project.projectDir}/build/resources/test/features/$System.env.market" + "/${file.name} " +
+                            "${project.projectDir}/build/resources/test/features/${market}" + "/${file.name} " +
+                            "--plugin json:${reporting.baseDir}/cucumber/${file.name}.json " +
+                            "--plugin pretty " +
+                            "--tags ${tag}"
+                }
+                println("${file.name}: Scenario output: ${reporting.baseDir}/cucumber/${file.name}.log ")
+            }
+        } finally {
+            generateReport()
+        }
+
+    }
+
+}
+
+task  (type: Exec, description: "Install Node Dependencies.", group: "verification") {
+    commandLine "npm"
+    args "install"
+}
+
+
+def generateReport() {
+    def jsonReports = fileTree(dir: "${reporting.baseDir}/cucumber/").include '**/*.json'.toString()
+    File reportOutputDirectory = new File("${reporting.baseDir}/cucumber")
+
+    List<String> jsonReportFiles = new ArrayList<String>()
+    jsonReports.each { File file ->
+        jsonReportFiles.add("${reporting.baseDir}/cucumber/${file.name}".toString())
+    }
+
+    Configuration configuration = new Configuration(reportOutputDirectory, "novastar" + "-" + System.getProperty("market") + "-" + System.getenv("env"))
+
+    ReportBuilder reportBuilder = new ReportBuilder(jsonReportFiles, configuration)
+    Reportable result = reportBuilder.generateReports()
+    println("\nReport available on: ${reporting.baseDir}/cucumber/cucumber-html-reports/overview-features.html")
+}
