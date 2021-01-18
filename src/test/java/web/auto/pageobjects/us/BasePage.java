@@ -42,7 +42,6 @@ public class BasePage {
     }
 
     public void openPage(String url) {
-        System.out.println("******"+LoadConfig.load(url));
         webDriver.get(LoadConfig.load(url));
     }
 

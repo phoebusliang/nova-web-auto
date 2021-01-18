@@ -133,10 +133,7 @@ public class BasicOperation {
 
             return true;
         }
-
-
     }
-
 
     public Object getFromByScript(String script, Predicate<Object> verify) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -254,7 +251,6 @@ public class BasicOperation {
 
     }
 
-
     public String getMetaTag(Document document, String attr) {
         Elements elements = document.select("meta[name=" + attr + "]");
         for (Element element : elements) {
@@ -269,14 +265,13 @@ public class BasicOperation {
             Elements elements = pageContent.select(LoadConfig.load(locator));
             ArrayList<Element> resultList = new ArrayList<Element>();
             elements.forEach(value -> resultList.add(value));
-            List<String> attributeList = resultList.stream().map(attribute).collect(Collectors.toList());
-            return attributeList;
+            return resultList.stream().map(attribute).collect(Collectors.toList());
         } catch (Exception e) {
             throw new AssertionError("element doesn't exist! Locate script is: " + locator);
         }
     }
 
-    public void checkStaticELement(Object value, Predicate<Object> verify) {
+    public void checkStaticElement(Object value, Predicate<Object> verify) {
         try {
             Assert.assertTrue(verify.test(value));
         } catch (AssertionError e) {

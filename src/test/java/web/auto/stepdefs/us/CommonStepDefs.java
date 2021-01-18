@@ -1,21 +1,20 @@
 package web.auto.stepdefs.us;
 
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import web.auto.pageobjects.us.BasePage;
-import web.auto.pageobjects.us.OrderPageObject;
+import web.auto.pageobjects.us.ICareHomePageObject;
 import web.auto.runtime.SharedDriver;
 
 public class CommonStepDefs {
     private BasePage basePage;
-    private OrderPageObject serviceOrderPage;
+    private ICareHomePageObject careHomePage;
     private WebDriver webDriver;
 
     public CommonStepDefs() {
         this.webDriver = new SharedDriver();
         basePage = new BasePage(webDriver);
-        serviceOrderPage = new OrderPageObject(webDriver);
+        careHomePage = new ICareHomePageObject(webDriver);
     }
 
     @Given("^I open the \"(.*?)\" page \"(.*?)\"$")

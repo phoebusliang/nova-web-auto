@@ -23,13 +23,13 @@ public class HomePageObject extends BasePage {
         basicOperation.getFromByScript(LoadConfig.load("navItems"), result -> result.toString().contains(items.replace(",", "")));
     }
 
-    public void checkPassedCanvasNum(String number){
+    public void checkPassedCanvasNum(String number) {
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         String num = js.executeScript("return myBar.config.data.datasets[0].data[0];").toString();
         Assert.assertEquals(number, num);
     }
 
-    public void login(String name, String password){
+    public void login(String name, String password) {
         List<WebElement> userName = basicOperation.findElementsByScript(LoadConfig.load("username"));
         List<WebElement> pwd = basicOperation.findElementsByScript(LoadConfig.load("password"));
         userName.get(0).sendKeys(name);
@@ -37,11 +37,19 @@ public class HomePageObject extends BasePage {
         clickLogin();
     }
 
-    public void clickLogin(){
+    public void clickLogin() {
         basicOperation.findElementsByScript(LoadConfig.load("loginBtn")).get(0).click();
     }
 
-    public void checkLoginErrorMsg(String msg){
+    public void checkLoginErrorMsg(String msg) {
         basicOperation.getFromByScript(LoadConfig.load("errorMsg"), result -> result.toString().contains(msg));
+    }
+
+    public void skipTips() {
+        basicOperation.findElementsByScript(LoadConfig.load("skipTips")).get(0).click();
+    }
+
+    public void selectComponent(String component) {
+        basicOperation.findElementsByScript(LoadConfig.load("selectComponentLeft") + component + LoadConfig.load("selectComponentRight")).get(0).click();
     }
 }
