@@ -44,4 +44,21 @@ public class ICareHomePageObject extends BasePage {
     public void selectProfileSetting(String setting) {
         basicOperation.findElementsByScript(LoadConfig.load("profileSettingLeft") + setting + LoadConfig.load("profileSettingRight")).get(0).click();
     }
+
+    public void searchWithText(String criteria) {
+        basicOperation.findElementsByScript(LoadConfig.load("searchBox")).get(0).sendKeys(criteria);
+        clickSearchBtn();
+    }
+
+    private void clickSearchBtn() {
+        basicOperation.findElementsByScript(LoadConfig.load("searchBtn")).get(0).click();
+    }
+
+    public void selectLang(String langItem) {
+        Actions builder = new Actions(webDriver);
+        WebElement lang = basicOperation.findElementsByScript(LoadConfig.load("langMenu")).get(0);
+        builder.moveToElement(lang).build().perform();
+        basicOperation.findElementsByScript(LoadConfig.load("langItemLeft") + langItem + LoadConfig.load("langItemRight")).get(0).click();
+    }
+
 }

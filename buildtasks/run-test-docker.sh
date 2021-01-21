@@ -5,10 +5,8 @@ echo " *** Start testing in docker *** "
 
 STATUS_CODE=$?
 
-docker run -w /test -v `dirname "$PWD"`:/root/.gradle -v `pwd`:/test nova:nova-web-test bash ./run-test.sh
+docker run -w /test -v `dirname "$PWD"`:/root/.gradle -v `pwd`:/test nova:nova-web-test bash ./run-test.sh $1 $2
 #docker run -it -w /test -v `dirname "$PWD"`:/root/.gradle -v `pwd`:/test nova:nova-web-test bash ./run-test.sh
-#docker run -it -w /test -v `dirname "$PWD"`:/root/.gradle -v `pwd`:/test phoebusliang:e2e-java bash ./run-test.sh
-#docker run -it -w /test -v `dirname "$PWD"`:/root/.gradle -v `pwd`:/test lz:lz-test bash ./run-test.sh
 
 if [ ${STATUS_CODE} -eq 0 ]
 then

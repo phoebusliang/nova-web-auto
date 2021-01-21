@@ -3,37 +3,32 @@
 E2E testing for the NovaStar Cloud web application
 =====================
 
-## Prerequisites
+## Prerequisites(if you want to run tests on local)
 
 * Chromedriver latest version - you can download it from [here](https://sites.google.com/a/chromium.org/chromedriver/) or use a package manager of your choice to install it
 * Chrome browser
 * JDK 1.8
+* gradle 5.6
 
-## To run, you will need to install gradle, then run with different regions with different configuration file:
-## NOTE: Now we support to run e2e tests for local and other envs (local: http://localhost:3000)
+## Execution
+* Given `browser=chrome` means we plan to run tests with Chrome.
+* `env` means we can choose Dev, SIT, UAT or Prod environment for different aim.
+* `market` is convenient for running tests on different languages.
 
-Linux: `browser=chrome env=local gradle -Dmarket=us clean build runInParallel`
+Linux/Mac: `browser=chrome env=local gradle -Dmarket=us clean build runInParallel`
 
 or
 
 `browser=chrome env=local ./gradlew -Dmarket=cn clean build runInParallel`
 
-Windows: `export browser=chrome env=local && gradle -Dmarket=us clean build runInParallel`
-
-## MockServer
-
-TBD
-
-# Notes
-
-* the `browser` variable must be set before running the tests
-* please run `gradle generateCucumberReport` to generate report if something failed when generating report automatically
-
-
-# Run in docker
-* Go to project dir and run `./buildtasks/run-test-docker.sh`
+#### Run in docker
+#### In order to make the test environment clean and reliable, we need to execute the test in docker, 
+#### and in that case, we should pass the arguments from command line to identify specific languages and environments,
+#### so all of them should be given from command line/jenkins
+* Go to project dir and run `./buildtasks/run-test-docker.sh $1 $2`
+  #### Example: ./buildtasks/run-test-docker.sh local cn (./buildtasks/run-test-docker.sh ENV MARKET)
 * Run `./buildtasks/clean.sh` if you want to clean all container or images
 
-# Run with docker-compose if test depends on the other service
+## MockServer
 
 TBD
