@@ -1,4 +1,4 @@
-package web.auto.stepdefs.us;
+package web.auto.stepdefs.cn;
 
 import cucumber.api.java.en.Given;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +20,6 @@ public class CommonStepDefs {
     @Given("^I open the \"(.*?)\" page \"(.*?)\"$")
     public void I_am_on_the_website(String page, String url) throws Throwable {
         basePage.openPage(url);
-        basePage.setWindowSize(1280, 1024);
+        basePage.setWindowSize(3840, 2160);
     }
 }

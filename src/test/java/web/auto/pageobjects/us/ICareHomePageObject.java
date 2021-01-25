@@ -1,5 +1,6 @@
 package web.auto.pageobjects.us;
 
+import cucumber.api.DataTable;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -61,4 +62,21 @@ public class ICareHomePageObject extends BasePage {
         basicOperation.findElementsByScript(LoadConfig.load("langItemLeft") + langItem + LoadConfig.load("langItemRight")).get(0).click();
     }
 
+    public void selectItem(String item) {
+        basicOperation.findElementsByScript(LoadConfig.load("navLeft") + item + LoadConfig.load("navRight")).get(0).click();
+    }
+
+    public void checkMonitorManagementTable(DataTable table) {
+        List<List<String>> rows = table.asLists(String.class);
+
+        for (int i = 1; i < rows.size(); i++) {
+            List<String> row = rows.get(i);
+            String recordString = "";
+            for (String s : row) {
+                recordString += s + "";
+            }
+            String finalRecordString = recordString;
+            basicOperation.getFromByScript(LoadConfig.load("monitorTableLeft") + String.valueOf(i-1) + LoadConfig.load("monitorTableRight"), result -> result.toString().equalsIgnoreCase(finalRecordString));
+        }
+    }
 }

@@ -29,14 +29,6 @@ public class HomePageObject extends BasePage {
         Assert.assertEquals(number, num);
     }
 
-    public void login(String name, String password) {
-        List<WebElement> userName = basicOperation.findElementsByScript(LoadConfig.load("username"));
-        List<WebElement> pwd = basicOperation.findElementsByScript(LoadConfig.load("password"));
-        userName.get(0).sendKeys(name);
-        pwd.get(0).sendKeys(password);
-        clickLogin();
-    }
-
     public void clickLogin() {
         basicOperation.findElementsByScript(LoadConfig.load("loginBtn")).get(0).click();
     }

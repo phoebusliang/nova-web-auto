@@ -1,4 +1,4 @@
-package web.auto.stepdefs.us;
+package web.auto.stepdefs.cn;
 
 
 import cucumber.api.java.en.Then;
@@ -31,12 +31,6 @@ public class HomeStepDefs {
     @Then("The passed case should be \"(.*?)\"$")
     public void checkPassedCaseInCanvas(String passeedNum) {
         homePage.checkPassedCanvasNum(passeedNum);
-    }
-
-    @When("Login with username \"(.*?)\" and password \"(.*?)\"$")
-    public void loginWithUserInfo(String username, String password) {
-        homePage.injectJQuery();
-        homePage.login(username, password);
     }
 
     @Then("The Login message should be \"(.*?)\"$")
