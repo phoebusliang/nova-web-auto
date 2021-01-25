@@ -9,7 +9,7 @@ E2E testing for the NovaStar Cloud web application
 * Chrome browser
 * JDK 1.8
 * gradle 5.6
-
+* goto to the project dir and run `docker build -f Dockerfile -t nova:nova-web-test .` to build the image
 ## Execution
 * Given `browser=chrome` means we plan to run tests with Chrome.
 * `env` means we can choose Dev, SIT, UAT or Prod environment for different aim.

@@ -79,4 +79,9 @@ public class ICareHomePageObject extends BasePage {
             basicOperation.getFromByScript(LoadConfig.load("monitorTableLeft") + String.valueOf(i-1) + LoadConfig.load("monitorTableRight"), result -> result.toString().equalsIgnoreCase(finalRecordString));
         }
     }
+
+    public void checkStatus(String status){
+        String finalStatus =  status.replaceAll(" ", "").replaceAll(":","");
+        basicOperation.getFromByScript(LoadConfig.load("monitorStatus"), result -> result.toString().equalsIgnoreCase(finalStatus));
+    }
 }
