@@ -1,11 +1,7 @@
-package web.auto.pageobjects.us;
+package web.auto.pageobjects.cn;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import web.auto.runtime.LoadConfig;
-
-import java.util.List;
 
 public class ICareLoginPageObject extends BasePage {
     public ICareLoginPageObject(WebDriver webDriver) {

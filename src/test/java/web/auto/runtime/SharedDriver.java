@@ -28,7 +28,7 @@ public class SharedDriver extends EventFiringWebDriver {
     private static final Thread CLOSE_THREAD = new Thread() {
         @Override
         public void run() {
-            REAL_DRIVER.quit();
+//            REAL_DRIVER.quit();
         }
     };
     public static final ThreadLocal session = new ThreadLocal();
@@ -46,7 +46,7 @@ public class SharedDriver extends EventFiringWebDriver {
 
         if (browserName.equals("chrome")) {
             ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--headless");
+//            chromeOptions.addArguments("--headless");
             chromeOptions.addArguments("--disable-gpu");
             chromeOptions.addArguments("--no-sandbox");
             chromeOptions.addArguments("--disable-dev-shm-usage");

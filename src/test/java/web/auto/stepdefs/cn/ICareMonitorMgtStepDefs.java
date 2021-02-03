@@ -6,85 +6,85 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
-import web.auto.pageobjects.cn.ICareHomePageObject;
+import web.auto.pageobjects.cn.ICareMonitorMgtPageObject;
 import web.auto.runtime.SharedDriver;
 
-public class ICareHomeStepDefs {
-    private ICareHomePageObject careHomePage;
+public class ICareMonitorMgtStepDefs {
+    private ICareMonitorMgtPageObject careMonitorMgtPage;
     private WebDriver webDriver;
 
-    public ICareHomeStepDefs() {
+    public ICareMonitorMgtStepDefs() {
         this.webDriver = new SharedDriver();
-        careHomePage = new ICareHomePageObject(webDriver);
+        careMonitorMgtPage = new ICareMonitorMgtPageObject(webDriver);
     }
 
     @Given("The table looks like$")
     public void checkTable(DataTable table) {
-        careHomePage.checkMonitorManagementTable(table);
+        careMonitorMgtPage.checkMonitorManagementTable(table);
     }
 
     @When("Go to the navigator \"(.*?)\"$")
     public void clickNav(String nav) {
-        careHomePage.selectItem(nav);
+        careMonitorMgtPage.selectItem(nav);
     }
 
     @Then("The screen status should be \"(.*?)\"$")
     public void checkScreenStatus(String status) {
-        careHomePage.checkStatus(status);
+        careMonitorMgtPage.checkStatus(status);
     }
 
     @When("Go to the detail of the \"(.*?)\" monitor$")
     public void clickMonitorItemDetail(String index) {
-        careHomePage.clickMonitorDetailByIndex(String.valueOf(Integer.parseInt(index) - 1));
+        careMonitorMgtPage.clickMonitorDetailByIndex(String.valueOf(Integer.parseInt(index) - 1));
     }
 
     @Then("The work information should be \"(.*?)\"$")
     public void checkWorkInfo(String workInfo) {
-        careHomePage.checkWorkSpaceInfo(workInfo);
+        careMonitorMgtPage.checkWorkSpaceInfo(workInfo);
     }
 
     @Then("The send card information should be \"(.*?)\"$")
     public void checkSendCardInfo(String cardInfo) {
-        careHomePage.checkDeviceInfo(cardInfo);
+        careMonitorMgtPage.checkDeviceInfo(cardInfo);
     }
 
     @Then("The receive card number should be \"(.*?)\"$")
     public void checkReceiveCardTotal(String num) {
-        careHomePage.checkReceiveCardNum(num);
+        careMonitorMgtPage.checkReceiveCardNum(num);
     }
 
     @Then("Switch the card tab to \"(.*?)\"$")
     public void clickCardTab(String status) {
-        careHomePage.toggleCardTab(status);
+        careMonitorMgtPage.toggleCardTab(status);
     }
 
     @Then("The status of the receive cards should be \"(.*?)\"$")
     public void checkCardStatus(String status) {
-        careHomePage.checkReceiveStatus(status);
+        careMonitorMgtPage.checkReceiveStatus(status);
     }
 
     @Then("The basic information of receive cards should be \"(.*?)\"$")
     public void checkCardBasicInfo(String status) {
-        careHomePage.checkBasicInfo(status);
+        careMonitorMgtPage.checkBasicInfo(status);
     }
 
     @Then("Switch the visual of receive cards to the radio \"(.*?)\"$")
     public void switchVisualRadio(String status) {
-        careHomePage.clickVisualRadio(status);
+        careMonitorMgtPage.clickVisualRadio(status);
     }
 
     @Then("The visual line number should be \"(.*?)\"$")
     public void checkTotalLineNum(String lines){
-        careHomePage.checkTotalLineNum(lines);
+        careMonitorMgtPage.checkTotalLineNum(lines);
     }
 
     @Then("The line number with color Green, Yellow and Red should be \"(.*?)\"$")
     public void checkLineNumberWithColor(String colorLine){
-        careHomePage.checkLineNumWithColor(colorLine);
+        careMonitorMgtPage.checkLineNumWithColor(colorLine);
     }
 
     @When("^Swith the monitor management tab to \"(.*?)\"$")
     public void switchMgtTab(String tab){
-        careHomePage.switchPageTab(tab);
+        careMonitorMgtPage.switchPageTab(tab);
     }
 }

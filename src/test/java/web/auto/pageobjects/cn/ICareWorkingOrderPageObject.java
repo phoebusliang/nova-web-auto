@@ -1,11 +1,7 @@
-package web.auto.pageobjects.us;
+package web.auto.pageobjects.cn;
 
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import web.auto.runtime.LoadConfig;
-
-import java.util.List;
 
 public class ICareWorkingOrderPageObject extends BasePage {
     public ICareWorkingOrderPageObject(WebDriver webDriver) {

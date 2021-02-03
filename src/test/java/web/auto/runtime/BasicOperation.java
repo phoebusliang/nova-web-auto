@@ -279,4 +279,16 @@ public class BasicOperation {
             throw new AssertionError("Assert failed! Actual result is: " + value);
         }
     }
+
+    public void waitJSComplete() {
+        long start = System.currentTimeMillis();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        while (System.currentTimeMillis() - start < Long.parseLong(LoadConfig.load("timeout")) * 1000) {
+            sleepTimeout("interval");
+            if (js.executeScript("return document.readyState").toString().equals("complete")) {
+                break;
+            }
+            sleepTimeout("interval");
+        }
+    }
 }

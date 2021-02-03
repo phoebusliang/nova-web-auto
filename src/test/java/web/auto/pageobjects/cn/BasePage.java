@@ -1,6 +1,5 @@
-package web.auto.pageobjects.us;
+package web.auto.pageobjects.cn;
 
-import org.jsoup.nodes.Document;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

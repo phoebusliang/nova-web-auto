@@ -1,14 +1,11 @@
-package web.auto.pageobjects.us;
+package web.auto.pageobjects.cn;
 
-import org.apache.tools.ant.taskdefs.LoadProperties;
-import org.jsoup.Connection;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import web.auto.runtime.LoadConfig;
-
-import java.util.List;
 
 public class HomePageObject extends BasePage {
     public HomePageObject(WebDriver webDriver) {
@@ -43,5 +40,16 @@ public class HomePageObject extends BasePage {
 
     public void selectComponent(String component) {
         basicOperation.findElementsByScript(LoadConfig.load("selectComponentLeft") + component + LoadConfig.load("selectComponentRight")).get(0).click();
+    }
+
+    public void goSpecificManagementPanel(String item) {
+        selectHeader(1);
+        basicOperation.findElementsByScript(LoadConfig.load("itemLeft") + item + LoadConfig.load("itemRight")).get(0).click();
+    }
+
+    private void selectHeader(Integer index) {
+        Actions builder = new Actions(webDriver);
+        WebElement headerBtn = basicOperation.findElementsByScript(LoadConfig.load("headerLeft") + index.toString() + LoadConfig.load("headerRight")).get(0);
+        builder.moveToElement(headerBtn).build().perform();
     }
 }

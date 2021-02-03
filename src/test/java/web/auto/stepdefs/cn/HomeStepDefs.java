@@ -5,8 +5,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 
-import web.auto.pageobjects.us.HomePageObject;
-import web.auto.runtime.BasicOperation;
+import web.auto.pageobjects.cn.HomePageObject;
 import web.auto.runtime.SharedDriver;
 
 public class HomeStepDefs {

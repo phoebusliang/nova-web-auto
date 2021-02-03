@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ICareMonitorMstPageObject extends BasePage {
-    public ICareMonitorMstPageObject(WebDriver webDriver) {
+public class ICareMonitorMgtPageObject extends BasePage {
+    public ICareMonitorMgtPageObject(WebDriver webDriver) {
         super(webDriver);
+        waitPageLoaded();
     }
 
     public void checkNoTip() {
@@ -25,17 +26,6 @@ public class ICareMonitorMstPageObject extends BasePage {
 
     public void checkStatusDevicesNum(String status, String num) {
         basicOperation.getFromByScript(LoadConfig.load("careBarStatusLeft") + status + LoadConfig.load("careBarStatusRight"), result -> result.toString().equalsIgnoreCase(num));
-    }
-
-    public void goSpecificManagementPanel(String item) {
-        selectHeader(1);
-        basicOperation.findElementsByScript(LoadConfig.load("itemLeft") + item + LoadConfig.load("itemRight")).get(0).click();
-    }
-
-    private void selectHeader(Integer index) {
-        Actions builder = new Actions(webDriver);
-        WebElement headerBtn = basicOperation.findElementsByScript(LoadConfig.load("headerLeft") + index.toString() + LoadConfig.load("headerRight")).get(0);
-        builder.moveToElement(headerBtn).build().perform();
     }
 
     public void clickManagementSubMenu(String menu) {
