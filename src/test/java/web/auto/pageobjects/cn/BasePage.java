@@ -48,4 +48,8 @@ public class BasePage {
     public void setWindowSize(int width, int height) {
         webDriver.manage().window().setSize(new Dimension(width, height));
     }
+
+    public void waitPageLoaded() {
+        basicOperation.waitJSComplete();
+    }
 }
