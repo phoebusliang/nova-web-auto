@@ -50,7 +50,7 @@ Feature: iCare screen management
       | 1     | 接收卡总数量: 88接收卡型号: 17678接收卡MCU: V4.5.3.0，共1个接收卡FPGA: V4.5.3.0，共1个 |
       | 2     | 接收卡总数量: 16接收卡型号: --接收卡MCU: 接收卡FPGA:                             |
 
-  @test
+  @Complete
   Scenario Outline: Check the visual link and link number with specific color of receive cards
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
