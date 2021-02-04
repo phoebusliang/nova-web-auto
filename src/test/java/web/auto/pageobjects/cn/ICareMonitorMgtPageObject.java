@@ -1,11 +1,14 @@
 package web.auto.pageobjects.cn;
 
 import cucumber.api.DataTable;
+import org.apache.logging.log4j.core.impl.ReusableLogEventFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import web.auto.runtime.LoadConfig;
 
+import javax.xml.transform.Result;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -80,7 +83,7 @@ public class ICareMonitorMgtPageObject extends BasePage {
     }
 
     public void checkMonitorDetailHintMessage(String msg) {
-        basicOperation.getFromByScript(LoadConfig.load("monitorItemDetailHintMsg"), result -> result.toString().contains(msg));
+        basicOperation.getFromByScript(LoadConfig.load("monitorItemDetailHintMsg"), result -> result.toString().replace("(\\r)(\\n)(+/g)", "").replaceAll(" ", "").equalsIgnoreCase(msg.replaceAll(" ", "")));
     }
 
     public void checkWorkSpaceInfo(String msg) {
@@ -143,5 +146,33 @@ public class ICareMonitorMgtPageObject extends BasePage {
 
     public void switchPageTab(String tab) {
         basicOperation.findElementsByScript(LoadConfig.load("monitorMgtTabLeft") + tab + LoadConfig.load("monitorMgtTabRight")).get(0).click();
+    }
+
+    public void getCheckReceiveCardTemp(String temps) {
+        basicOperation.getFromByScript(LoadConfig.load("receiveCardTemp"), result -> result.toString().equalsIgnoreCase(temps));
+    }
+
+    public void checkReceiveCardVersion(String versions) {
+        basicOperation.getFromByScript(LoadConfig.load("receiveCardVersion"), result -> result.toString().equalsIgnoreCase(versions));
+    }
+
+    public void selectSendCardByName(String deviceName) {
+        basicOperation.findElementsByScript(LoadConfig.load("sendCardOptionNameLeft") + deviceName + LoadConfig.load("sendCardOptionNameRight")).get(0).click();
+    }
+
+    public void selectSendCardByIndex(String index) {
+        basicOperation.findElementsByScript(LoadConfig.load("sendCardOptionIndex")).get(Integer.parseInt(index) - 1).click();
+    }
+
+    public void checkSelectionOfReceiveCardByName(String deviceName) {
+        basicOperation.getFromByScript(LoadConfig.load("contentSendCardNameLeft") + deviceName + LoadConfig.load("contentSendCardNameRight"), result -> result.toString().equalsIgnoreCase("true"));
+    }
+
+    public void checkSelectionOfReceiveCardByIndex(String index) {
+        basicOperation.getFromByScript(LoadConfig.load("contentSendCardSelectionIndexLeft") + String.valueOf(Integer.parseInt(index) - 1) + LoadConfig.load("contentSendCardSelectionIndexRight"), result -> result.toString().equalsIgnoreCase("true"));
+    }
+
+    public void clickContentSenderByIndex(String index) {
+        basicOperation.findElementsByScript(LoadConfig.load("contentSendCardIndexLeft") + String.valueOf(Integer.parseInt(index) - 1) + LoadConfig.load("contentSendCardIndexRight")).get(0).click();
     }
 }

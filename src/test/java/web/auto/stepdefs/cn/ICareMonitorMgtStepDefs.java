@@ -48,6 +48,11 @@ public class ICareMonitorMgtStepDefs {
         careMonitorMgtPage.checkDeviceInfo(cardInfo);
     }
 
+    @Then("^The hint message in monitor management page should be \"(.*?)\"$")
+    public void checkHintMsg(String msg){
+        careMonitorMgtPage.checkMonitorDetailHintMessage(msg);
+    }
+
     @Then("The receive card number should be \"(.*?)\"$")
     public void checkReceiveCardTotal(String num) {
         careMonitorMgtPage.checkReceiveCardNum(num);
