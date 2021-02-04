@@ -3,7 +3,7 @@ Feature: iCare screen management
   As an operation and maintenance
   I need to get all information from the screen list
 
-  @complete
+  @Complete
   Scenario: Check the data of the monitor management
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
@@ -12,13 +12,13 @@ Feature: iCare screen management
       | 1  | 名称：世纪金花地铁口广告屏注册：2021-01-05 02:30:38 | 2021/01/14 ~ 2021/02/12 | 客户：123456 | 离线   | 查看详情   |
       | 2  | 名称：华城国际吊装屏注册：2020-09-14 09:36:57    | 2021/02/19 ~ 2021/02/20 | 客户：eeeeee | 离线   | 查看详情   |
 
-  @complete
+  @Complete
   Scenario: Check the status of the screen
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
     Then The screen status should be "0正常 0故障 0风险 2离线"
 
-  @complete
+  @Complete
   Scenario Outline: Check the information of the PC and device
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
@@ -52,7 +52,7 @@ Feature: iCare screen management
       | 2     | 接收卡总数量: 16接收卡型号: --接收卡MCU: 接收卡FPGA:                             |
       | 2     | 接收卡总数量: 16接收卡型号: --接收卡MCU: 接收卡FPGA:                             |
 
-  @Compete
+  @Complete
   Scenario Outline: Check the visual link and link number with specific color of receive cards
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
