@@ -31,4 +31,11 @@ or
 
 ## MockServer
 
-TBD
+Make E2E tests more stable and more scenario covered.
+
+### Start MockServer
+Need to start the server with `prod` argument passed from command line or CI.
+`./gradlew -Dprod=icare startMockServer`
+
+### Stop MockServer
+`./gradlew stopMockServer`
