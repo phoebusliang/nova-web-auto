@@ -62,6 +62,23 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
+task startMockServer() {
+    doLast {
+        println 'start mockServer'
+        def prod = System.getProperty("prod")
+        exec {
+            executable "bash"
+            args "-c", "java -Dfile.encoding=UTF-8 -jar ${project.projectDir}/src/mock/moco.jar start -p 9999 -g ${project.projectDir}/src/mock/${prod}/setting.json > /dev/null 2>&1 &"
+        }
+    }
+    sleep(5*1000)
+}
+
+task stopMockServer(type: Exec) {
+    commandLine 'sh', 'clean.sh'
+    println 'stop mockServer'
+}
+
 task runInParallel() {
     doLast {
         def tag = System.getProperty("tag")

@@ -1,0 +1,110 @@
+{
+  "status": 100000,
+  "message": "",
+  "data": [
+    {
+      "uid": "17526744990",
+      "source_uid": 4803,
+      "user_name": "Zentai111",
+      "password": "123456",
+      "job_number": "0001",
+      "phones": "[029-8536425]",
+      "comment": "",
+      "head_sculpture": "/img/customerService.png",
+      "online_status": 0,
+      "last_time": 1606124636138,
+      "create_time": 1602667956624
+    },
+    {
+      "uid": "175452bb541",
+      "source_uid": 4803,
+      "user_name": "zxg2",
+      "password": "123456",
+      "job_number": "0002",
+      "phones": "[029-8536425]",
+      "comment": "",
+      "head_sculpture": "/img/customerService.png",
+      "online_status": 0,
+      "last_time": 1606124626887,
+      "create_time": 1603183293761
+    },
+    {
+      "uid": "175cecf14c7",
+      "source_uid": 4803,
+      "user_name": "user12",
+      "password": "user12",
+      "job_number": "003874",
+      "phones": "[13735805448]",
+      "comment": "",
+      "head_sculpture": "/img/customerService.png",
+      "online_status": 0,
+      "last_time": 1606124603780,
+      "create_time": 1605492479175
+    },
+    {
+      "uid": "175cecfcebd",
+      "source_uid": 4803,
+      "user_name": "user1234",
+      "password": "user12",
+      "job_number": "003826",
+      "phones": "[18600602874]",
+      "comment": "",
+      "head_sculpture": "/img/customerService.png",
+      "online_status": 1,
+      "last_time": 1606733513216,
+      "create_time": 1605492526781
+    },
+    {
+      "uid": "176173b0a9e",
+      "source_uid": 4803,
+      "user_name": "yy-oem-1",
+      "password": "yy-oem-1",
+      "job_number": "0003",
+      "phones": "[17878787878]",
+      "comment": "",
+      "head_sculpture": "/img/customerService.png",
+      "online_status": 0,
+      "last_time": 1606707514014,
+      "create_time": 1606707514014
+    },
+    {
+      "uid": "176416eae58",
+      "source_uid": 4803,
+      "user_name": "32321312",
+      "password": "123456",
+      "job_number": "321312321",
+      "phones": "[3213213213]",
+      "comment": "",
+      "head_sculpture": "/img/customerService.png",
+      "online_status": 0,
+      "last_time": 1607415541336,
+      "create_time": 1607415541336
+    },
+    {
+      "uid": "176417138b3",
+      "source_uid": 4803,
+      "user_name": "kefu7",
+      "password": "123456",
+      "job_number": "87887",
+      "phones": "[asdasd]",
+      "comment": "",
+      "head_sculpture": "/img/customerService.png",
+      "online_status": 1,
+      "last_time": 1610347161448,
+      "create_time": 1607415707827
+    },
+    {
+      "uid": "1776b957e95",
+      "source_uid": 4803,
+      "user_name": "kefu666",
+      "password": "123456",
+      "job_number": "00325",
+      "phones": "[fafagga ]",
+      "comment": "",
+      "head_sculpture": "/img/customerService.png",
+      "online_status": 0,
+      "last_time": 1612417695381,
+      "create_time": 1612417695381
+    }
+  ]
+}

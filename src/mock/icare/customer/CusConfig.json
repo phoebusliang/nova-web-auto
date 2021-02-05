@@ -1,0 +1,18 @@
+[
+  {
+    "request": {
+      "method": "get",
+      "uri": "/backend/custom/all",
+      "headers": {
+        "content-type": "application/json;charset=UTF-8",
+        "Accept-Language": "en-GB"
+      }
+    },
+    "response": {
+      "headers": {
+        "content-type": "application/json"
+      },
+      "file": "icare/customer/CusServiceDetail.json"
+    }
+  }
+]

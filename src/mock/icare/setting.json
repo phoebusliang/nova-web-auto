@@ -1,0 +1,6 @@
+[
+  {
+    "file_root": "src/mock",
+    "include": "icare/customer/CusConfig.json"
+  }
+]
