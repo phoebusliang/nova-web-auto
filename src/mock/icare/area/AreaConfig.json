@@ -2,7 +2,7 @@
   {
     "request": {
       "method": "get",
-      "uri": "/backend/custom/all",
+      "uri": "/backend/users/areas",
       "headers": {
         "content-type": "application/json"
       }
@@ -11,7 +11,7 @@
       "headers": {
         "content-type": "application/json"
       },
-      "file": "icare/customer/CusServiceDetail.json"
+      "file": "icare/area/AreaInfo.json"
     }
   }
 ]

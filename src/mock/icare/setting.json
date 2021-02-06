@@ -2,5 +2,13 @@
   {
     "file_root": "src/mock",
     "include": "icare/customer/CusConfig.json"
+  },
+  {
+    "file_root": "src/mock",
+    "include": "icare/screen/ScreenConfig.json"
+  },
+  {
+    "file_root": "src/mock",
+    "include": "icare/area/AreaConfig.json"
   }
 ]

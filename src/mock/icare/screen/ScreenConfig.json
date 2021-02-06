@@ -1,0 +1,35 @@
+[
+  {
+    "request": {
+      "method": "get",
+      "uri": "/backend/screens/base-info",
+      "headers": {
+        "content-type": "application/json"
+      }
+    },
+    "response": {
+      "headers": {
+        "content-type": "application/json"
+      },
+      "file": "icare/screen/HomePageScreenInfo.json"
+    }
+  },
+  {
+    "request": {
+      "method": "post",
+      "uri": "/backend/screens/status-info",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "file": {
+        "json": "icare/screen/ScreenStatusOfflineRequest.json"
+      }
+    },
+    "response": {
+      "headers": {
+        "content-type": "application/json"
+      },
+      "file": "icare/screen/ScreenStatusOffline.json"
+    }
+  }
+]

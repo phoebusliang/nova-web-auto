@@ -1,0 +1,94 @@
+{
+  "status": 100000,
+  "message": "",
+  "data": [
+    {
+      "id": 6,
+      "uid": 4803,
+      "type": 0,
+      "area_name": "西北区",
+      "create_time": 1593588408,
+      "update_time": 1612509368
+    },
+    {
+      "id": 319,
+      "uid": 4803,
+      "type": 1,
+      "area_name": "新分区",
+      "create_time": 1611889890,
+      "update_time": 0
+    },
+    {
+      "id": 320,
+      "uid": 4803,
+      "type": 1,
+      "area_name": "新分区",
+      "create_time": 1611889891,
+      "update_time": 0
+    },
+    {
+      "id": 321,
+      "uid": 4803,
+      "type": 1,
+      "area_name": "大洋洲哈哈",
+      "create_time": 1611889891,
+      "update_time": 0
+    },
+    {
+      "id": 322,
+      "uid": 4803,
+      "type": 1,
+      "area_name": "新分区",
+      "create_time": 1611889891,
+      "update_time": 0
+    },
+    {
+      "id": 323,
+      "uid": 4803,
+      "type": 1,
+      "area_name": "新分区",
+      "create_time": 1611889891,
+      "update_time": 0
+    },
+    {
+      "id": 324,
+      "uid": 4803,
+      "type": 1,
+      "area_name": "新分区",
+      "create_time": 1611889892,
+      "update_time": 0
+    },
+    {
+      "id": 325,
+      "uid": 4803,
+      "type": 1,
+      "area_name": "新分区",
+      "create_time": 1611889892,
+      "update_time": 0
+    },
+    {
+      "id": 326,
+      "uid": 4803,
+      "type": 1,
+      "area_name": "新分区",
+      "create_time": 1611889930,
+      "update_time": 0
+    },
+    {
+      "id": 327,
+      "uid": 4803,
+      "type": 1,
+      "area_name": "新分区",
+      "create_time": 1611889931,
+      "update_time": 0
+    },
+    {
+      "id": 328,
+      "uid": 4803,
+      "type": 1,
+      "area_name": "新分区",
+      "create_time": 1611889931,
+      "update_time": 0
+    }
+  ]
+}

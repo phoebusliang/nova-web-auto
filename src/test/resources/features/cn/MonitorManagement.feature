@@ -8,9 +8,9 @@ Feature: iCare screen management
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
     Then The table looks like
-      | 序号 | 显示屏                                 | 质保期限                    | 所属客户      | 运行状态 | 屏体监控详情 |
-      | 1  | 名称：世纪金花地铁口广告屏注册：2021-01-05 02:30:38 | 2021/01/14 ~ 2021/02/12 | 客户：123456 | 离线   | 查看详情   |
-      | 2  | 名称：华城国际吊装屏注册：2020-09-14 09:36:57    | 2021/02/19 ~ 2021/02/20 | 客户：eeeeee | 离线   | 查看详情   |
+      | 序号 | 显示屏                                 | 质保期限                    | 所属客户      | 运行状态 | 备份文件 | 操作 |
+      | 1  | 名称：世纪金花地铁口广告屏注册：2021-01-05 02:30:38 | 2021/01/14 ~ 2021/02/12 | 客户：123456 | 离线   | --   | 详情 |
+      | 2  | 名称：华城国际吊装屏注册：2020-09-14 09:36:57    | 2021/02/19 ~ 2021/02/20 | 客户：eeeeee | 离线   | --   | 详情 |
 
   @Complete
   Scenario: Check the status of the screen
@@ -50,7 +50,6 @@ Feature: iCare screen management
       | index | basic-info                                                      |
       | 1     | 接收卡总数量: 88接收卡型号: 17678接收卡MCU: V4.5.3.0，共1个接收卡FPGA: V4.5.3.0，共1个 |
       | 2     | 接收卡总数量: 16接收卡型号: --接收卡MCU: 接收卡FPGA:                             |
-      | 2     | 接收卡总数量: 16接收卡型号: --接收卡MCU: 接收卡FPGA:                             |
 
   @Complete
   Scenario Outline: Check the visual link and link number with specific color of receive cards
@@ -64,4 +63,3 @@ Feature: iCare screen management
       | index | line-num | green-yellow-red |
       | 1     | 86       | 44,40,2          |
       | 2     | 15       | 4,0,11           |
-
