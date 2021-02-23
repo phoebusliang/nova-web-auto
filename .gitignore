@@ -28,4 +28,5 @@ caches
 native
 daemon
 screenshot
+wrapper
 /.gradle/
