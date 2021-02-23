@@ -26,18 +26,19 @@ public class BasePage {
                 "scriptElt.src = '" + LoadConfig.load("jqueryCDN") + "'; \n" +
                 "document.getElementsByTagName('head')[0].appendChild(scriptElt);";
         js.executeScript(injection);
-        basicOperation.getFromByScript("return (typeof jQuery != \'undefined\')", result -> result.equals(true));
-
-        this.waitJQuery();
     }
 
-    private void waitJQuery() {
+    public void waitJQuery() {
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
-        WebDriverWait wait = new WebDriverWait(webDriver, 30);
-        Function<WebDriver, Boolean> jQueryAvailable = WebDriver -> (
-                (Boolean) js.executeScript("return (typeof jQuery != \'undefined\')")
-        );
-        wait.until(jQueryAvailable);
+        long start = System.currentTimeMillis();
+        while (System.currentTimeMillis() - start < Long.parseLong(LoadConfig.load("timeout")) * 1000) {
+            if (!(Boolean) js.executeScript("return (typeof jQuery != \'undefined\')")) {
+                basicOperation.sleepTimeout("interval");
+                injectJQuery();
+            } else {
+                return;
+            }
+        }
     }
 
     public void openPage(String url) {

@@ -29,7 +29,8 @@ public class CommonStepDefs {
     public void loginICare(String url, String username, String password) {
         basePage.openPage(url);
         basePage.setWindowSize(1860, 1080);
-        basePage.injectJQuery();
+        basePage.waitPageLoaded();
+        basePage.waitJQuery();
         loginPg.loginCare(username, password);
     }
 }

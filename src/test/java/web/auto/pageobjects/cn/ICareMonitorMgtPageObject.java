@@ -69,7 +69,7 @@ public class ICareMonitorMgtPageObject extends BasePage {
                 recordString += s + "";
             }
             String finalRecordString = recordString;
-            basicOperation.getFromByScript(LoadConfig.load("monitorTableLeft") + (i - 1) + LoadConfig.load("monitorTableRight"), result -> result.toString().equalsIgnoreCase(finalRecordString));
+            basicOperation.getFromByScript(LoadConfig.load("monitorTableLeft") + (i - 1) + LoadConfig.load("monitorTableRight"), result -> finalRecordString.replaceAll(" ","").contains(result.toString().replaceAll(" ","")));
         }
     }
 

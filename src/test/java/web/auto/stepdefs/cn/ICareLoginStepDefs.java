@@ -17,7 +17,7 @@ public class ICareLoginStepDefs {
 
     @When("Login with username \"(.*?)\" and password \"(.*?)\"$")
     public void loginWithUserInfo(String username, String password) {
-        careLoginPage.injectJQuery();
+        careLoginPage.waitJQuery();
         careLoginPage.loginCare(username, password);
     }
 }

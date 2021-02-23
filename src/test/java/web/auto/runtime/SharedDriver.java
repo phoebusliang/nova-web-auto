@@ -83,7 +83,6 @@ public class SharedDriver extends EventFiringWebDriver {
         session.set(context);
         String browser = System.getenv("browser");
         if (browser.equals("chrome")) {
-                System.out.println("delete cookies");
                 manage().deleteAllCookies();
         } else if (browser.equals("firefox")) {
             if (REAL_DRIVER.toString().contains("(null)")) {
