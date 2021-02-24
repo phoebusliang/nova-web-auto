@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import web.auto.pageobjects.cn.BasePage;
 import web.auto.pageobjects.cn.ICareMonitorMgtPageObject;
 import web.auto.pageobjects.cn.ICareLoginPageObject;
+import web.auto.runtime.BasicOperation;
 import web.auto.runtime.SharedDriver;
 
 public class CommonStepDefs {

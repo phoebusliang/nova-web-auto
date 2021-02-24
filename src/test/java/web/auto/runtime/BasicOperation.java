@@ -137,8 +137,6 @@ public class BasicOperation {
 
     public Object getFromByScript(String script, Predicate<Object> verify) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        System.out.println("********");
-        System.out.println(js.executeScript(script));
         Supplier<Object> action = () -> (Object) js.executeScript(script);
         return waitForText(action, verify, "Element not found!");
     }

@@ -30,15 +30,19 @@ public class BasePage {
 
     public void waitJQuery() {
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        injectJQuery();
         long start = System.currentTimeMillis();
         while (System.currentTimeMillis() - start < Long.parseLong(LoadConfig.load("timeout")) * 1000) {
             if (!(Boolean) js.executeScript("return (typeof jQuery != \'undefined\')")) {
                 basicOperation.sleepTimeout("interval");
-                injectJQuery();
             } else {
                 return;
             }
         }
+    }
+
+    public void sleep(String time){
+        basicOperation.sleepTimeout(time);
     }
 
     public void openPage(String url) {
