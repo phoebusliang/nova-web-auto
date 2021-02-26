@@ -5,6 +5,8 @@ import org.apache.logging.log4j.core.impl.ReusableLogEventFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import web.auto.runtime.LoadConfig;
 
 import javax.xml.transform.Result;
@@ -69,13 +71,13 @@ public class ICareMonitorMgtPageObject extends BasePage {
                 recordString += s + "";
             }
             String finalRecordString = recordString;
-            basicOperation.getFromByScript(LoadConfig.load("monitorTableLeft") + (i - 1) + LoadConfig.load("monitorTableRight"), result -> finalRecordString.replaceAll(" ","").contains(result.toString().replaceAll(" ","")));
+            basicOperation.getFromByScript(LoadConfig.load("monitorTableLeft") + (i - 1) + LoadConfig.load("monitorTableRight"), result -> finalRecordString.replaceAll(" ", "").contains(result.toString().replaceAll(" ", "")));
         }
     }
 
     public void checkStatus(String status) {
         String finalStatus = status.replaceAll(" ", "").replaceAll(":", "");
-        basicOperation.getFromByScript(LoadConfig.load("monitorStatus"), result -> result.toString().equalsIgnoreCase(finalStatus));
+        basicOperation.getFromByScript(LoadConfig.load("monitorStatus"), result -> result.toString().contains(finalStatus));
     }
 
     public void clickMonitorDetailByIndex(String index) {
@@ -90,6 +92,10 @@ public class ICareMonitorMgtPageObject extends BasePage {
         if (checkWorkInfoExisted()) {
             basicOperation.getFromByScript(LoadConfig.load("workInfoLeft") + "0" + LoadConfig.load("workInfoRight"), result -> result.toString().contains(msg));
         }
+    }
+
+    public void checkScreenBaseInfo(String msg) {
+        basicOperation.getFromByScript(LoadConfig.load("screenBaseInfo"), result -> result.toString().contains(msg.replaceAll(" ", "")));
     }
 
     public void checkDeviceInfo(String msg) {
@@ -111,7 +117,9 @@ public class ICareMonitorMgtPageObject extends BasePage {
     }
 
     public void toggleCardTab(String status) {
-        basicOperation.findElementsByScript(LoadConfig.load("cardTabToggleLeft") + status + LoadConfig.load("cardTabToggleRight")).get(0).click();
+        WebElement element = basicOperation.findElementsByScript(LoadConfig.load("cardTabToggleLeft") + status + LoadConfig.load("cardTabToggleRight")).get(0);
+        (new WebDriverWait(webDriver, Integer.parseInt(LoadConfig.load("timeout")))).until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
     }
 
     public void checkReceiveStatus(String status) {
@@ -144,6 +152,10 @@ public class ICareMonitorMgtPageObject extends BasePage {
         }
     }
 
+    public void checkCardNumWithStatus(String status, String num) {
+        basicOperation.getFromByScript(LoadConfig.load("cardStatusNumLeft") + status + LoadConfig.load("cardStatusNumRight"), result -> result.toString().equalsIgnoreCase(num));
+    }
+
     public void switchPageTab(String tab) {
         basicOperation.findElementsByScript(LoadConfig.load("monitorMgtTabLeft") + tab + LoadConfig.load("monitorMgtTabRight")).get(0).click();
     }
@@ -174,5 +186,26 @@ public class ICareMonitorMgtPageObject extends BasePage {
 
     public void clickContentSenderByIndex(String index) {
         basicOperation.findElementsByScript(LoadConfig.load("contentSendCardIndexLeft") + String.valueOf(Integer.parseInt(index) - 1) + LoadConfig.load("contentSendCardIndexRight")).get(0).click();
+    }
+
+    public void checkGeneralInfo(String cardInfo) {
+        moveToSenderCard();
+        String[] cards = cardInfo.split("\\^");
+        List<String> cardList = new ArrayList<>();
+        cardList = Arrays.asList(cards);
+
+        for (int i = 0; i < cardList.size(); i++) {
+            List<String> finalCardList = cardList;
+            int finalI = i;
+            basicOperation.getFromByScript(LoadConfig.load("generalInfoInDetail"), result -> result.toString().contains(finalCardList.get(finalI)));
+        }
+    }
+
+    public void moveToSenderCard() {
+        Actions action = new Actions(webDriver);
+        List<WebElement> senderCards = basicOperation.findElementsByScript(LoadConfig.load("generalInfoCards"));
+        for (WebElement card : senderCards) {
+            action.moveToElement(card).build().perform();
+        }
     }
 }

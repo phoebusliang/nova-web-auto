@@ -43,14 +43,19 @@ public class ICareMonitorMgtStepDefs {
         careMonitorMgtPage.checkWorkSpaceInfo(workInfo);
     }
 
+    @Then("^The screen base information should be\"(.*?)\"$")
+    public void checkScreenBaseInfo(String msg) {
+        careMonitorMgtPage.checkScreenBaseInfo(msg);
+    }
+
+    @Then("^The general screen/send cards/receive cards base information in detail page should be \"(.*?)\"$")
+    public void checkGeneralInfoInDetail(String generalInfo){
+        careMonitorMgtPage.checkGeneralInfo(generalInfo);
+    }
+
     @Then("The send card information should be \"(.*?)\"$")
     public void checkSendCardInfo(String cardInfo) {
         careMonitorMgtPage.checkDeviceInfo(cardInfo);
-    }
-
-    @Then("^The hint message in monitor management page should be \"(.*?)\"$")
-    public void checkHintMsg(String msg){
-        careMonitorMgtPage.checkMonitorDetailHintMessage(msg);
     }
 
     @Then("The receive card number should be \"(.*?)\"$")
@@ -60,6 +65,7 @@ public class ICareMonitorMgtStepDefs {
 
     @Then("Switch the card tab to \"(.*?)\"$")
     public void clickCardTab(String status) {
+        careMonitorMgtPage.waitPageLoaded();
         careMonitorMgtPage.toggleCardTab(status);
     }
 
@@ -79,17 +85,22 @@ public class ICareMonitorMgtStepDefs {
     }
 
     @Then("The visual line number should be \"(.*?)\"$")
-    public void checkTotalLineNum(String lines){
+    public void checkTotalLineNum(String lines) {
         careMonitorMgtPage.checkTotalLineNum(lines);
     }
 
     @Then("The line number with color Green, Yellow and Red should be \"(.*?)\"$")
-    public void checkLineNumberWithColor(String colorLine){
+    public void checkLineNumberWithColor(String colorLine) {
         careMonitorMgtPage.checkLineNumWithColor(colorLine);
     }
 
+    @Then("^The number card status with \"(.*?)\" should be \"(.*?)\"$")
+    public void checkCardNum(String status, String num) {
+        careMonitorMgtPage.checkCardNumWithStatus(status, num);
+    }
+
     @When("^Swith the monitor management tab to \"(.*?)\"$")
-    public void switchMgtTab(String tab){
+    public void switchMgtTab(String tab) {
         careMonitorMgtPage.switchPageTab(tab);
     }
 }

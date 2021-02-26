@@ -83,7 +83,7 @@ public class SharedDriver extends EventFiringWebDriver {
         session.set(context);
         String browser = System.getenv("browser");
         if (browser.equals("chrome")) {
-                manage().deleteAllCookies();
+            manage().deleteAllCookies();
         } else if (browser.equals("firefox")) {
             if (REAL_DRIVER.toString().contains("(null)")) {
                 REAL_DRIVER = new FirefoxDriver();
@@ -109,7 +109,7 @@ public class SharedDriver extends EventFiringWebDriver {
         if (scenario.isFailed()) {
             File scrFile = ((TakesScreenshot) REAL_DRIVER).getScreenshotAs(OutputType.FILE);
             final byte[] embedScreenshot = ((TakesScreenshot) REAL_DRIVER).getScreenshotAs(OutputType.BYTES);
-            FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + File.separator + "screenshot" + File.separator + scenario.getName() + ".png"));
+            FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + File.separator + "screenshot" + File.separator + scenario.getName() + "-" + String.valueOf(System.currentTimeMillis()) + ".png"));
             scenario.embed(embedScreenshot, "image/png");
         }
     }
