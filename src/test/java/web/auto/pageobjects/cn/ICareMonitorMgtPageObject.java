@@ -42,12 +42,17 @@ public class ICareMonitorMgtPageObject extends BasePage {
     }
 
     public void searchWithText(String criteria) {
+        waitPageLoaded();
         basicOperation.findElementsByScript(LoadConfig.load("searchBox")).get(0).sendKeys(criteria);
         clickSearchBtn();
     }
 
     private void clickSearchBtn() {
         basicOperation.findElementsByScript(LoadConfig.load("searchBtn")).get(0).click();
+    }
+
+    public void checkScreenRecordNum(String num) {
+        basicOperation.getFromByScript(LoadConfig.load("screenRecordNum"), result -> result.toString().equalsIgnoreCase(num));
     }
 
     public void selectLang(String langItem) {

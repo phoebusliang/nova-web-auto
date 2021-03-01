@@ -28,9 +28,19 @@ public class ICareMonitorMgtStepDefs {
         careMonitorMgtPage.selectItem(nav);
     }
 
-    @Then("The screen status should be \"(.*?)\"$")
+    @When("The screen status should be \"(.*?)\"$")
     public void checkScreenStatus(String status) {
         careMonitorMgtPage.checkStatus(status);
+    }
+
+    @Then("^Search screen with specific name \"(.*?)\"$")
+    public void searchScreenName(String name){
+        careMonitorMgtPage.searchWithText(name);
+    }
+
+    @Then("^The record number of searching result should be \"(.*?)\"$")
+    public void checkSearchNum(String num){
+        careMonitorMgtPage.checkScreenRecordNum(num);
     }
 
     @When("Go to the detail of the \"(.*?)\" monitor$")

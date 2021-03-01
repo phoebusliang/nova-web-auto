@@ -18,3 +18,10 @@ Feature: iCare screen management
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
     Then The screen status should be "3全部 0正常 2故障 0风险 1离线"
+
+  @Complete
+  Scenario: Check searching function with specific screens
+    Given Login iCare "iCare-cn" page with username "123456" and password "123456"
+    When Go to the navigator "显示屏管理"
+    And Search screen with specific name "msd"
+    Then The record number of searching result should be "1"
