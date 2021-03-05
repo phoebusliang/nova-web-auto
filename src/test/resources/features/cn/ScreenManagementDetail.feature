@@ -3,7 +3,7 @@ Feature: iCare screen management detail
   As an operation and maintenance
   I need to check detail information and topology from the screen detail page
 
-  @Complete
+  @test
   Scenario Outline: Check the information of the PC and device
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
@@ -15,7 +15,7 @@ Feature: iCare screen management detail
       | 2     | 世纪金花地铁口广告屏 地址：西安 分区：新分区        |
       | 3     | 华城国际吊装屏 地址：陕西省,西安市,科技二路 分区：新分区 |
 
-  @Complete
+  @test
   Scenario: Check the images info of running receive cards
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
@@ -23,7 +23,7 @@ Feature: iCare screen management detail
     And Switch the card tab to "接收卡"
     Then The receive card number should be "88"
 
-  @Complete
+  @test
   Scenario Outline: Check basic information of receive card
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
@@ -36,7 +36,7 @@ Feature: iCare screen management detail
       | 2     | 接收卡总数量: 88 |
       | 3     | 接收卡总数量: 16 |
 
-  @Complete
+  @test
   Scenario Outline: Check the visual link and link number with specific color of receive cards
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
@@ -51,7 +51,7 @@ Feature: iCare screen management detail
       | 2     | 44        | 41         | 3       |
       | 3     | 4         | 0          | 12      |
 
-  @Complete
+  @test
   Scenario Outline: Check the basic screen information in screen detail
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"

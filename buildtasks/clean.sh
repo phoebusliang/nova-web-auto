@@ -5,9 +5,7 @@ echo " *** Start to clean...*** "
 
 STATUS_CODE=$?
 
-docker stop $(docker ps -aq)
-docker rm $(docker ps -aq)
-docker rmi -f $(docker images -q)
+docker rm -f $(docker ps -aq)
 
 if [ ${STATUS_CODE} -eq 0 ]
 then

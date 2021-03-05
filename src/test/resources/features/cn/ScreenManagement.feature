@@ -13,13 +13,13 @@ Feature: iCare screen management
       | 1  | 世纪金花地铁口广告屏 | 故障   | --   | 2021/01/14 ~ 2021/02/12 | 2021-01-05 10:30:38 |
       | 2  | 世纪金花地铁口广告屏 | 离线   | --   | 2021/02/19 ~ 2021/02/20 | 2020-09-14 17:36:57 |
 
-  @Complete
+  @test
   Scenario: Check the status of the screen
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
     Then The screen status should be "3全部 0正常 2故障 0风险 1离线"
 
-  @Complete
+  @test
   Scenario: Check searching function with specific screens
     Given Login iCare "iCare-cn" page with username "123456" and password "123456"
     When Go to the navigator "显示屏管理"
