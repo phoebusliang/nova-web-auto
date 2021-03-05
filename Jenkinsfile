@@ -9,7 +9,7 @@ pipeline {
         stage('Run web end to end test') {
             steps {
                 echo '***Start iCare API Automation***'
-                sh 'buildtasks/run-test-docker.sh'
+                sh 'buildtasks/run-test-docker.sh local cn'
             }
         }
         stage('Publish Result') {
